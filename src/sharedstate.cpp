@@ -139,7 +139,7 @@ struct SharedStatePrivate
 			fclose(tmp);
 		}
 
-		fileSystem.addPath(".");
+		fileSystem.addPath(".", 0, false, true);
 
 		for (size_t i = 0; i < config.rtps.size(); ++i)
 			fileSystem.addPath(config.rtps[i].c_str());
