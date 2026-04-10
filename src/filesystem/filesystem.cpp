@@ -323,9 +323,9 @@ FileSystem::~FileSystem() {
     Debug() << "PhyFS failed to deinit.";
 }
 
-void FileSystem::addPath(const char *path, const char *mountpoint, bool reload) {
+void FileSystem::addPath(const char *path, const char *mountpoint, bool reload, bool prepend) {
   /* Try the normal mount first */
-    int state = PHYSFS_mount(path, mountpoint, 1);
+    int state = PHYSFS_mount(path, mountpoint, prepend ? 0 : 1);
   if (!state) {
     /* If it didn't work, try mounting via a wrapped
      * SDL_RWops */
